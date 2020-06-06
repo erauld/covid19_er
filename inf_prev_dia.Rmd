@@ -15,10 +15,11 @@ library(lubridate)
 
 ```
 ```{r, include=FALSE}
-sys.source("inf_script.R", envir = knitr::knit_global())
 sys.source("cv_graph_deaths.R", envir = knitr::knit_global())
 sys.source("inf_let.R", envir = knitr::knit_global())
 ```
+
+
 
 ## Informe diario
 
@@ -48,27 +49,6 @@ g
 l1
 l2
 ```
-
-
-## Informe epidemiológico
-
-Este informe incluye resumen de la información epidemiológica de los últimos siete días.
-
-```{r epid, echo=FALSE, message=FALSE}
-epi2.cl %>% 
-  filter(between(fecha, today() - days(7), today())) %>%
-  select(-pop, -let_edad_cm) %>% 
-  select(fecha, edad, everything()) %>% 
-  kable() %>% 
-  kable_styling(bootstrap_options = "striped", full_width = F, fixed_thead = T)
-```
-
-En términos gráficos:
-
-```{r epid2, echo=FALSE, message=FALSE, fig.align = "center", out.width = "80%"}
-t1
-```
-
 
 
 ## Datos
