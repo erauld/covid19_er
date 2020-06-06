@@ -15,10 +15,10 @@ cv.d <- cv.d %>% rename(edad="Grupo de edad")
 cv.d$edad<-factor(cv.d$edad, levels = c("<=39","40-49","50-59","60-69", "70-79", "80-89", ">=90"))
 
 
-#Gr√°fico Barra
+#Gr·fico Barra
 g1 <- cv.d %>%
   drop_na(muertes) %>%
-   ggplot(aes(fecha, muertes)) +
+  ggplot(aes(fecha, muertes)) +
   geom_col(aes(fill=edad), width = 1)+
   #geom_line(aes(y=muertes, colour=edad)) +
   theme_minimal() +
@@ -33,7 +33,7 @@ g1 <- cv.d %>%
 #caption="Fuente: Ministerio de Salud, Chile.")
 g1
 
-#Gr·fico LÌnea
+#Gr?fico L?nea
 g2 <- cv.d %>%
   drop_na(muertes) %>%
   ggplot(aes(fecha)) +

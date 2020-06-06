@@ -25,10 +25,10 @@ l1 <- datosdia.cl %>%
   #scale_y_continuous(trans = "log2") +
   scale_x_date(date_breaks = "2 day", date_labels =  "%d-%m-%Y") +
   theme(axis.text.x=element_text(angle=60, hjust=1))+
-  labs(title="Fallecidos nuevos COVID-19 Chile",
+  labs(title="Fallecidos diarios COVID-19 Chile",
        subtitle="Desde 50 fallecidos",
-       y="Fallecidos nuevos (prom. mov. 5 d?as)",
-       x="D?a",
+       y="Fallecidos nuevos (prom. mov. 5 dias)",
+       x="Día",
        #title="Muertes COVID 19 por Edad - Chile",
        caption="Fuente: Ministerio de Salud, Chile // @erauld"
   )
@@ -45,7 +45,7 @@ l2 <- let.dia %>%
   labs(title="Letalidad COVID-19 Chile",
        subtitle="Desde 50 fallecidos",
        y="Letalidad en porcentaje",
-       x="D?a",
+       x="Día",
        colour = "Edad",
        #title="Muertes COVID 19 por Edad - Chile",
        caption="Fuente: Ministerio de Salud, Chile // @erauld"

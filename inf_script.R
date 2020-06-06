@@ -66,7 +66,7 @@ deaths.cl <- deaths.cl %>%
 
 
 deaths.cl$edad[deaths.cl$edad %in% c("80-89",
-                                   ">=90")] <- ">=80"
+                                     ">=90")] <- ">=80"
 
 deaths.cl <- deaths.cl %>%
   group_by(fecha, edad) %>% 
@@ -86,7 +86,7 @@ pop.cl$edad <- factor(pop.cl$edad, levels=tramosed)
 epi.cl <- left_join(epi.cl, pop.cl)
 
 
-#Creación de variables.
+#Creaci?n de variables.
 
 epi2.cl <- epi.cl %>% 
   mutate(let_edad_porc = round((casos_fall/casos_conf)*100, 2),
@@ -95,7 +95,7 @@ epi2.cl <- epi.cl %>%
          inc_fall_cm = round((casos_fall/pop)*100000,2))
 
 
-#Gráfico
+#Gr?fico
 
 t1 <- epi2.cl %>%
   drop_na(let_edad_porc) %>% 
