@@ -1,0 +1,58 @@
+---
+title: "Informe COVID 19 Chile"
+author: "Exequiel Rauld"
+date: '`r format(Sys.time(), "%d de %B, %Y")`'
+output: 
+  bookdown::html_document2: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(knitr)
+library(kableExtra)
+library(tidyverse)
+library(lubridate)
+
+```
+```{r, include=FALSE}
+sys.source("cv_graph_deaths.R", envir = knitr::knit_global())
+sys.source("inf_let.R", envir = knitr::knit_global())
+```
+
+
+
+## Informe diario
+
+Datos a nivel nacional:
+```{r dia2, echo=FALSE, message=FALSE}
+let.dia %>% 
+  filter(between(fecha, today() - days(6), today())) %>%
+  kable() %>% 
+  kable_styling(bootstrap_options = "striped", full_width = F, fixed_thead = T)
+```
+
+La información diaria de fallecidos por tramo etario (últimos siete días): 
+```{r dia, echo=FALSE, message=FALSE}
+cv.d2 %>% 
+  filter(between(fecha, today() - days(6), today())) %>%
+  kable() %>% 
+  kable_styling(bootstrap_options = "striped", full_width = F, fixed_thead = T)
+```
+
+
+En términos gráficos:
+
+```{r día3, echo=FALSE, message=FALSE, fig.align = "center", out.width = "90%"}
+g
+```
+```{r día4, echo=FALSE, message=FALSE, fig.align = "center", out.width = "90%"}
+l1
+l2
+```
+
+
+## Datos
+
+- Informe Epidemiológico MINSAL.
+- Reporte diario MINSAL.
+- Proyección de la población INE.
