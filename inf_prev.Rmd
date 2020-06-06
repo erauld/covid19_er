@@ -25,7 +25,7 @@ sys.source("inf_let.R", envir = knitr::knit_global())
 Datos a nivel nacional:
 ```{r dia2, echo=FALSE, message=FALSE}
 let.dia %>% 
-  filter(between(fecha, today() - days(6), today())) %>%
+  filter(between(fecha, today() - days(7), today())) %>%
   kable() %>% 
   kable_styling(bootstrap_options = "striped", full_width = F, fixed_thead = T)
 ```
@@ -33,7 +33,7 @@ let.dia %>%
 La información diaria de fallecidos por tramo etario (últimos siete días): 
 ```{r dia, echo=FALSE, message=FALSE}
 cv.d2 %>% 
-  filter(between(fecha, today() - days(6), today())) %>%
+  filter(between(fecha, today() - days(7), today())) %>%
   kable() %>% 
   kable_styling(bootstrap_options = "striped", full_width = F, fixed_thead = T)
 ```

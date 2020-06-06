@@ -9,13 +9,13 @@ datosdia.cl <- read_csv(url("https://raw.githubusercontent.com/MinCiencia/Datos-
 datosdia.cl <- datosdia.cl %>%
   rename(fecha = Fecha, casos_nuevos_sintomas = "Casos nuevos con sintomas", casos_tot = "Casos totales", casos_rec = `Casos recuperados`, casos_fall= Fallecidos, casos_act = `Casos activos`, casos_nuevos_nosintomas = `Casos nuevos sin sintomas`, casos_nuevos_dia = `Casos nuevos totales` )
 
-# Creación de variables
+# Creaci?n de variables
 datosdia.cl <- datosdia.cl %>%
   mutate(let_dia_por = (casos_fall/casos_tot)*100,
          fall_nuevos = casos_fall - lag(casos_fall, default = first(casos_fall), order_by = fecha),
          fall_nuevos_prom5 = roll_mean(fall_nuevos, 5))
 
-#Nuevos fall día
+#Nuevos fall d?a
 l1 <- datosdia.cl %>%
   filter(casos_fall>=50) %>%
   ggplot(aes(fecha, fall_nuevos_prom5)) +
@@ -27,15 +27,14 @@ l1 <- datosdia.cl %>%
   theme(axis.text.x=element_text(angle=60, hjust=1))+
   labs(title="Fallecidos nuevos COVID-19 Chile",
        subtitle="Desde 50 fallecidos",
-       y="Fallecidos nuevos (prom. mov. 5 días)",
-       x="Día",
+       y="Fallecidos nuevos (prom. mov. 5 d?as)",
+       x="D?a",
        #title="Muertes COVID 19 por Edad - Chile",
        caption="Fuente: Ministerio de Salud, Chile // @erauld"
   )
 l1
-#Letalidad día
-let.dia <- datosdia.cl %>% transmute(fecha, casos_nuevos_dia, fall_nuevos, casos_fall, let_dia_por = round(let_dia_por,2))
-View(let.dia)
+#Letalidad d?a
+let.dia <- datosdia.cl %>% transmute(fecha, casos_nuevos_dia, fall_nuevos, casos_tot, casos_fall, let_dia_por = round(let_dia_por,2))
 l2 <- let.dia %>%
   filter(casos_fall>=50) %>%
   ggplot(aes(fecha)) +
@@ -46,7 +45,7 @@ l2 <- let.dia %>%
   labs(title="Letalidad COVID-19 Chile",
        subtitle="Desde 50 fallecidos",
        y="Letalidad en porcentaje",
-       x="Día",
+       x="D?a",
        colour = "Edad",
        #title="Muertes COVID 19 por Edad - Chile",
        caption="Fuente: Ministerio de Salud, Chile // @erauld"
