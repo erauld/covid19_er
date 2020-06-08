@@ -20,6 +20,7 @@ g1 <- cv.d %>%
   drop_na(muertes) %>%
   ggplot(aes(fecha, muertes)) +
   geom_col(aes(fill=edad), width = 1)+
+  geom_vline(xintercept = as.numeric(as.Date("2020-06-07")), linetype="dotted", color = "red", size=0.6) +
   #geom_line(aes(y=muertes, colour=edad)) +
   theme_minimal() +
   #scale_y_continuous(trans = "log2") +
@@ -38,6 +39,7 @@ g2 <- cv.d %>%
   drop_na(muertes) %>%
   ggplot(aes(fecha)) +
   geom_line(aes(y=muertes, colour=edad)) +
+  geom_vline(xintercept = as.numeric(as.Date("2020-06-07")), linetype="dotted", color = "red", size=0.6) +
   theme_minimal() +
   scale_y_continuous(trans = "log2") +
   labs(x = "Día", y = "Muertes") +

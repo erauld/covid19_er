@@ -20,6 +20,7 @@ l1 <- datosdia.cl %>%
   filter(casos_fall>=50) %>%
   ggplot(aes(fecha, fall_nuevos_prom5)) +
   geom_line(aes(y=fall_nuevos_prom5)) +
+  geom_vline(xintercept = as.numeric(as.Date("2020-06-07")), linetype="dotted", color = "red", size=0.6) +
   theme_minimal() +
   geom_smooth(method = lm, formula = y ~ splines::bs(x, 4), se = T) +
   #scale_y_continuous(trans = "log2") +
@@ -39,6 +40,7 @@ l2 <- let.dia %>%
   filter(casos_fall>=50) %>%
   ggplot(aes(fecha)) +
   geom_line(aes(y=let_dia_por)) +
+  geom_vline(xintercept = as.numeric(as.Date("2020-06-07")), linetype="dotted", color = "red", size=0.6) +
   theme_minimal() +
   scale_x_date(date_breaks = "2 day", date_labels =  "%d-%m-%Y") +
   theme(axis.text.x=element_text(angle=60, hjust=1))+

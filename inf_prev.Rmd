@@ -40,7 +40,7 @@ cv.d2 %>%
 ```
 
 
-En términos gráficos:
+En términos gráficos^[Línea punteada representa la fecha de cambio metodológico en reporte de fallecidos.]:
 
 ```{r día3, echo=FALSE, message=FALSE, fig.align = "center", out.width = "90%"}
 g
